@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import { rootRoute } from 'constants/routes';
 
 const Root = () => (
   <Fragment>
@@ -7,7 +10,11 @@ const Root = () => (
       <title>React Contentful Pokedex</title>
       <meta name="description" content="Pokedex built on top of React with Contenful CMS!"/>
     </Helmet>
-    <h1>Hello</h1>
+    <BrowserRouter>
+      <Route path={rootRoute} render={() => (
+        <h1>Hello</h1>    
+      )} />
+    </BrowserRouter>
   </Fragment>
 );
 
