@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navigation from 'components/Navigation';
 import Homepage from 'views/Homepage';
-import Pokemons from 'views/Pokemons';
+import Developers from 'views/Developers';
 import NoMatch from 'views/NoMatch';
-import { rootRoute, pokemonsRoute } from 'constants/routes';
+import { rootRoute, developersRoute } from 'constants/routes';
 
 const Root = () => (
   <Fragment>
@@ -19,7 +19,7 @@ const Root = () => (
       <Navigation/>
         <Switch>
           <Route exact={true} path={rootRoute} component={Homepage} />
-          <Route exact={true} path={pokemonsRoute} component={Pokemons} />
+          <Route exact={true} path={developersRoute} component={Developers} />
           <Route component={NoMatch} />
         </Switch>
       </Fragment>

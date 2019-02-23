@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { rootRoute, pokemonsRoute } from 'constants/routes';
+import { rootRoute, developersRoute } from 'constants/routes';
 
 class Navigation extends Component {
   state = {
@@ -16,7 +16,7 @@ class Navigation extends Component {
 
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-primary">
-        <Link className="navbar-brand" to={rootRoute}>Pokedex</Link>
+        <Link className="navbar-brand" to={rootRoute}>devs4rent</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,7 +33,7 @@ class Navigation extends Component {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link" to={pokemonsRoute}>Pokemons</NavLink>
+              <NavLink className="nav-link" to={developersRoute}>Developers</NavLink>
             </li>
           </ul>
         </div>

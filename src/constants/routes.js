@@ -1,2 +1,2 @@
 export const rootRoute = '/';
-export const pokemonsRoute = '/pokemons';
+export const developersRoute = '/developers';
