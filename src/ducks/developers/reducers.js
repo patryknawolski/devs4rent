@@ -8,8 +8,10 @@ const initialState = [
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_DEVELOPERS_SUCCESS:
-      return { ...state, list: action.payload.data.developers };
+    case GET_DEVELOPERS_SUCCESS: {
+      const { developers } = action;
+      return [...developers];
+    }
     default:
       return state;
   }

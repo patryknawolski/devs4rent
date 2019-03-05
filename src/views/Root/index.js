@@ -11,24 +11,22 @@ import store from 'ducks/store';
 import { rootRoute, developersRoute } from 'constants/routes';
 
 const Root = () => (
-  <Fragment>
-    <Provider store={store}>
-      <Helmet>
-        <title>React Contentful Pokedex</title>
-        <meta name="description" content="Pokedex built on top of React with Contenful CMS!"/>
-      </Helmet>
-      <BrowserRouter>
-        <Fragment>
-          <Navigation/>
-          <Switch>
-            <Route exact={true} path={rootRoute} component={Homepage} />
-            <Route exact={true} path={developersRoute} component={Developers} />
-            <Route component={NoMatch} />
-          </Switch>
-        </Fragment>
-      </BrowserRouter>
-    </Provider>
-  </Fragment>
+  <Provider store={store}>
+    <Helmet>
+      <title>React Contentful Pokedex</title>
+      <meta name="description" content="Pokedex built on top of React with Contenful CMS!"/>
+    </Helmet>
+    <BrowserRouter>
+      <Fragment>
+        <Navigation/>
+        <Switch>
+          <Route exact={true} path={rootRoute} component={Homepage} />
+          <Route exact={true} path={developersRoute} component={Developers} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Fragment>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default Root;
