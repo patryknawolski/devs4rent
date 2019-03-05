@@ -1,16 +1,11 @@
-import { GET_DEVELOPERS_SUCCESS } from './actionTypes';
+import { GET_DEVELOPERS_FULFILLED } from './actionTypes';
 
-const initialState = [
-  {
-    name: 'Andrzej'
-  },
-];
+const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_DEVELOPERS_SUCCESS: {
-      const { developers } = action;
-      return [...developers];
+    case GET_DEVELOPERS_FULFILLED: {
+      return [...action.payload];
     }
     default:
       return state;
