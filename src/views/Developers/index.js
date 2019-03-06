@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getDevelopers } from '../../ducks/developers/actions';
@@ -11,20 +11,20 @@ class Developers extends Component {
   }
 
   render() {
+    const { developers } = this.props;
+    
     return (
-      <Fragment>
-        <div className="container">
-          <div className="jumbotron my-5">
-            <h1 className="display-4">Developers</h1>
-            <p className="lead">This is a list of our currently available developers.</p>
-          </div>
-          <div className="card-columns">
-            { this.props.developers.map((developer, i) =>
-                <DeveloperCard developer={developer} />
-            )}
-          </div>
+      <div className="container">
+        <div className="jumbotron my-5">
+          <h1 className="display-4">Developers</h1>
+          <p className="lead">This is a list of our currently available developers.</p>
         </div>
-      </Fragment>
+        <div className="card-columns">
+          { developers.map(developer =>
+            <DeveloperCard key={developer.id} developer={developer} />
+          )}
+        </div>
+      </div>
     );
   }
 }
