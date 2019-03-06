@@ -12,8 +12,8 @@ class Developers extends Component {
     return (
       <Fragment>
         <h1>Hello, this is Developers page!</h1>
-        { this.props.developers.map(({fields}, i) =>
-          <pre key={i}>{JSON.stringify(fields, null, 2)}</pre>
+        { this.props.developers.map((developer, i) =>
+          <pre key={i}>{JSON.stringify(developer, null, 2)}</pre>
         )}
       </Fragment>
     );
