@@ -7,9 +7,10 @@ import Navigation from 'components/Navigation';
 import Homepage from 'views/Homepage';
 import Developers from 'views/Developers';
 import Developer from 'views/Developer';
+import Posts from 'views/Posts';
 import NoMatch from 'views/NoMatch';
 import store from 'ducks/store';
-import { rootRoute, developersRoute, getDeveloperRoute } from 'constants/routes';
+import { rootRoute, developersRoute, getDeveloperRoute, postsRoute } from 'constants/routes';
 
 const Root = () => (
   <Provider store={store}>
@@ -24,6 +25,7 @@ const Root = () => (
           <Route exact={true} path={rootRoute} component={Homepage} />
           <Route exact={true} path={developersRoute} component={Developers} />
           <Route exact={true} path={getDeveloperRoute(':id')} component={Developer} />
+          <Route exact={true} path={postsRoute} component={Posts} />
           <Route component={NoMatch} />
         </Switch>
       </Fragment>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-
-import { rootRoute, developersRoute } from 'constants/routes';
+import { rootRoute, developersRoute, postsRoute } from 'constants/routes';
 
 class Navigation extends Component {
   state = {
@@ -34,6 +33,9 @@ class Navigation extends Component {
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink className="nav-link" to={developersRoute}>Developers</NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" to={postsRoute}>Posts</NavLink>
             </li>
           </ul>
         </div>

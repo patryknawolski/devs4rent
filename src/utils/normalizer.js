@@ -36,6 +36,25 @@ export const normalizeDeveloper = ({
   photo: normalizePhoto(photo),
   technologies: normalizeTechnologies(technologies),
   type,
-})
+});
 
 export const normalizeDevelopers = developers => developers.map(normalizeDeveloper);
+
+export const normalizePost = ({
+  sys: { id, updatedAt },
+  fields: {
+    author,
+    title,
+    content,
+  },
+}) => {
+  return ({
+    id,
+    author: normalizeDeveloper(author),
+    title,
+    content,
+    updatedAt
+  })
+};
+
+export const normalizePosts = posts => posts.map(normalizePost);

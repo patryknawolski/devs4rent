@@ -19,3 +19,13 @@ export const developerType = shape({
 });
 
 export const developersType = arrayOf(developerType);
+
+export const postType = shape({
+  id: string.isRequired,
+  author: string.isRequired,
+  title: string.isRequired,
+  content: string.isRequired,
+  updatedAt: string.isRequired,
+})
+
+export const postsType = arrayOf(postType);
