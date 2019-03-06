@@ -1,6 +1,13 @@
-import { GET_DEVELOPERS } from './actionTypes';
+import { GET_DEVELOPER, GET_DEVELOPERS } from './actionTypes';
 import client from '../contentfulClient';
-import { normalizeDevelopers } from '../../utils/normalizer';
+import { normalizeDeveloper, normalizeDevelopers } from '../../utils/normalizer';
+
+export const getDeveloper = id => {
+  return {
+    type: GET_DEVELOPER,
+    payload: client.getEntry(id).then(data => normalizeDeveloper),
+  };
+}
 
 export const getDevelopers = () => {
   return {

@@ -6,16 +6,24 @@ import { developersRoute } from 'constants/routes';
 
 class Developer extends Component {
   componentDidMount() {
-    const { match, getDeveloper } = this.props;
-    getDeveloper(match.params.id);
+    const { match, getDeveloper, developers } = this.props;
+    const { id } = match.params;
+    const isDeveloperLoaded = !!developers.find(developer => developer.id === id);
+
+    if(!isDeveloperLoaded) {
+      getDeveloper(match.params.id);
+    }
   }
 
   render() {
-    const { developer } = this.props;
+    const { developers, match } = this.props;
+    const loadedDeveloper = developers.find(developer => developer.id === match.params.id);
 
-    if (developer === null) return null;
+    if (!loadedDeveloper) {
+      return null;
+    };
 
-    const { name, photo, description, level, type, technologies } = developer;
+    const { name, photo, description, level, type, technologies } = loadedDeveloper;
 
     return (
       <div className="container mt-5">
@@ -35,7 +43,7 @@ class Developer extends Component {
 }
 
 const mapStateToProps = state => ({
-  developer: state.developer
+  developers: state.developers
 });
 
 const mapDispatchToProps = {
