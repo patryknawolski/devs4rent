@@ -13,8 +13,8 @@ import { rootRoute, developersRoute } from 'constants/routes';
 const Root = () => (
   <Provider store={store}>
     <Helmet>
-      <title>React Contentful Pokedex</title>
-      <meta name="description" content="Pokedex built on top of React with Contenful CMS!"/>
+      <title>devs4rent</title>
+      <meta name="description" content="Built on top of React with Contenful CMS!"/>
     </Helmet>
     <BrowserRouter>
       <Fragment>
