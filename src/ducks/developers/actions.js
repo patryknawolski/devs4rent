@@ -5,7 +5,7 @@ import { normalizeDeveloper, normalizeDevelopers } from '../../utils/normalizer'
 export const getDeveloper = id => {
   return {
     type: GET_DEVELOPER,
-    payload: client.getEntry(id).then(data => normalizeDeveloper),
+    payload: client.getEntry(id).then(normalizeDeveloper),
   };
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getDeveloper } from '../../ducks/developer/actions';
+import { getDeveloper } from '../../ducks/developers/actions';
 import { developersRoute } from 'constants/routes';
 
 class Developer extends Component {

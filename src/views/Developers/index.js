@@ -19,11 +19,13 @@ class Developers extends Component {
           <h1 className="display-4">Developers</h1>
           <p className="lead">This is a list of our currently available developers.</p>
         </div>
-        <div className="card-columns">
-          { developers.map(developer =>
-            <DeveloperCard key={developer.id} developer={developer} />
-          )}
-        </div>
+        { developers.length &&
+          <div className="card-columns">
+            { developers.map(developer =>
+              <DeveloperCard key={developer.id} developer={developer} />
+            )}
+          </div>
+        }
       </div>
     );
   }
