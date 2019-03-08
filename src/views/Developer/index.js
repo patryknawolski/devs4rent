@@ -33,7 +33,6 @@ class Developer extends Component {
 
     return (
       <div className="container mt-5">
-        <Link className="btn btn-secondary mb-3" to={developersRoute}>Back to developers</Link>
         <div className="media">
           <img src={photo.url} className="mr-3" alt={photo.title}/>
           <div className="media-body">

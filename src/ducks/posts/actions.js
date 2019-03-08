@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POSTS_BY_DEVELOPER_ID } from './actionTypes';
+import { GET_POSTS, GET_POSTS_BY_DEVELOPER_ID, GET_POST } from './actionTypes';
 import client from '../contentfulClient';
 import { normalizePosts } from '../../utils/normalizer';
 
@@ -8,7 +8,7 @@ export const getPosts = () => {
     payload: client.getEntries({
       content_type: 'post',
       include: 2
-    }).then(data => { return normalizePosts(data.items); }),
+    }).then(data => normalizePosts(data.items)),
   };
 }
 
@@ -19,6 +19,16 @@ export const getPostsByDeveloperId = id => {
       content_type: 'post',
       include: 2,
       'sys.id': '425ZE2d2G0sD4hIp3QU5Ws',
-    }).then(data => { return normalizePosts(data.items); }),
+    }).then(data => normalizePosts(data.items)),
   }; 
+}
+
+export const getPost = id => {
+  return {
+    type: GET_POST,
+    payload: client.getEntries({
+      'sys.id': id,
+      include: 2
+    }).then(data => normalizePosts(data.items)),
+  };
 }
