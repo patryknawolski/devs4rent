@@ -22,10 +22,10 @@ export const developersType = arrayOf(developerType);
 
 export const postType = shape({
   id: string.isRequired,
-  author: string.isRequired,
+  author: developerType,
   title: string.isRequired,
   content: string.isRequired,
   updatedAt: string.isRequired,
-})
+});
 
 export const postsType = arrayOf(postType);

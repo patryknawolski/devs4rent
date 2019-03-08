@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getDeveloper } from '../../ducks/developers/actions';
+import { getPostsByDeveloperId } from '../../ducks/posts/actions';
 import { developersRoute } from 'constants/routes';
+import PostTeaser from '../../components/PostTeaser';
 
 class Developer extends Component {
   componentDidMount() {
-    const { match, getDeveloper, developers } = this.props;
+    const { match, getDeveloper, developers, getPostsByDeveloperId } = this.props;
     const { id } = match.params;
     const isDeveloperLoaded = !!developers.find(developer => developer.id === id);
+
+    getPostsByDeveloperId(id);
 
     if(!isDeveloperLoaded) {
       getDeveloper(match.params.id);
@@ -16,14 +20,16 @@ class Developer extends Component {
   }
 
   render() {
-    const { developers, match } = this.props;
-    const loadedDeveloper = developers.find(developer => developer.id === match.params.id);
+    const { developers, posts, match } = this.props;
+    const { id } =  match.params;
+    const developer = developers.find(developer => developer.id === id);
+    const developersPosts = posts.filter(post => post.author.id === id);
 
-    if (!loadedDeveloper) {
+    if (!developer) {
       return null;
     };
 
-    const { name, photo, description, level, type, technologies } = loadedDeveloper;
+    const { name, photo, description, level, type, technologies } = developer;
 
     return (
       <div className="container mt-5">
@@ -34,7 +40,17 @@ class Developer extends Component {
             <h2 className="mt-0">{name}</h2>
             <h5 className="text-muted font-weight-light">{`${level} ${type} Developer`}</h5>
             <p>{description}</p>
-            <p className="">{technologies.map(technology => technology.name).join(', ')}</p>
+            <p>{technologies.map(technology => technology.name).join(', ')}</p>
+            { developersPosts.length > 0 &&
+              <div>
+                <h4>{name}'s posts</h4>
+                {
+                  developersPosts.map(post => 
+                    <PostTeaser post={post}/>
+                  )
+                }
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -43,11 +59,13 @@ class Developer extends Component {
 }
 
 const mapStateToProps = state => ({
-  developers: state.developers
+  developers: state.developers,
+  posts: state.posts
 });
 
 const mapDispatchToProps = {
-  getDeveloper
+  getDeveloper,
+  getPostsByDeveloperId,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Developer);
