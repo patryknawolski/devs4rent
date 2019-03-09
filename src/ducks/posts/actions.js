@@ -18,7 +18,7 @@ export const getPostsByDeveloperId = id => {
     payload: client.getEntries({
       content_type: 'post',
       include: 2,
-      'sys.id': '425ZE2d2G0sD4hIp3QU5Ws',
+      'fields.author.sys.id': id,
     }).then(data => normalizePosts(data.items)),
   }; 
 }
