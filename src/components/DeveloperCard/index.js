@@ -23,7 +23,7 @@ class DeveloperCard extends Component {
           <p className='card-text'>
             { technologies.map(technology => technology.name).join(', ') }
           </p>
-          <Link to={getDeveloperRoute(id)} className='btn btn-primary'>Go somewhere</Link>
+          <Link to={getDeveloperRoute(id)} className='btn btn-primary'>See more</Link>
         </div>
       </div>
     );
